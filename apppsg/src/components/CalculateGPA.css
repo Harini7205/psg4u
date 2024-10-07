@@ -4,8 +4,7 @@
     padding: 40px;
     background-size: cover;
     background-repeat: repeat;
-    width: 100vw;
-    height: 100vh;
+    height: 150vh;
     padding-bottom: 200px;
 }
 
@@ -48,12 +47,14 @@
 }
 .sub1 .sub1input{
     position: absolute;
-    left: 30%;
+    left: 33%;
     width: 150px;
     margin-left: 3%;
     border-radius: 10px;
     height: 35px;
     border: 1px solid black;
+    font-size: 17px;
+    text-align: center;
 }
 .calculatebutton{
     background: #699BF773;
@@ -63,6 +64,7 @@
     font-weight: bold;
     border-radius: 30px;
     margin-top: 100px;
+    font-size: 19px;
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 .calculatebutton:hover{

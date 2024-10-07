@@ -96,7 +96,7 @@ export const CalculateGPA = () => {
               <input
                 type="number"
                 className='sub1input'
-                value={subject.grade || 0}  // Default value of 0 if no grade
+                value={subject.grade || "Nil"}  // Default value of 0 if no grade
                 onChange={(e) => handleGradeChange(index, e.target.value)}
                 min="5" max="10"
               />
@@ -115,11 +115,12 @@ export const CalculateGPA = () => {
 
           <div style={{display:"flex",justifyContent:"center",gap:20}}>
           <p className='calculatebutton' onClick={calculateGPA}>Calculate</p>
-          </div>
           <div className='gparesult'>
         <label htmlFor="resultinput">RESULT:</label>
         <input type="text" className='sub1input' id='resultinput' value={calculatedGPA || ''} readOnly />
       </div>
+          </div>
+          
         </div> 
         
         <Footer />   
