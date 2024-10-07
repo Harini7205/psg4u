@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+.track-status-page{
+    font-family:'Karla';
+}
+.title-page{
+    text-align:center;
+    font-size:36px;
+}
+.raiseQueryBar{
+    margin:20px;
+    display:flex;
+    justify-content:space-between;
+}
+.nav-list-raise-query{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:50px;
+}
+.raiseQueryBar a{
+    font-size:24px;
+    text-decoration: none;
+    color:black;
+}
+.raiseQueryBar a:hover{
+    text-decoration: underline;
+}
+.trackstatusform{
+    background-image:url('../../public/images/raisequerybg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:20px 100px 40px 100px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:Center;
+}
+.rectangle{
+    border:1px solid black;
+    padding:20px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background-color:rgba(239, 245, 255, 1);
+    width:990px;
+}
+.rectangle p{
+    font-size:24px;
+}
+.close-img{
+    align-self:flex-end;
+    height:40px;
+    width:40px;
+}
+.list-element{
+    display:flex;
+    align-items:center;
+}
+.list-element img{
+    height:50px;
+    width:50px;
+    margin-right:20px;
+}
+.list-element p{
+    font-size:24px;
+}

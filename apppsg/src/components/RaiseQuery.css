@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+.raise-query-page{
+    font-family:'Karla';
+}
+.title-page{
+    text-align:center;
+    font-size:36px;
+}
+.raiseQueryBar{
+    margin:20px;
+    display:flex;
+    justify-content:space-between;
+}
+.nav-list-raise-query{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:50px;
+}
+.raiseQueryBar a{
+    font-size:24px;
+    text-decoration: none;
+    color:black;
+}
+.raiseQueryBar a:hover{
+    text-decoration: underline;
+}
+.raisequeryform{
+    background-image:url('../../public/images/raisequerybg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:20px 100px 40px 100px;
+}
+.rowinput{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+.select-option,.type-text{
+    width:300px;
+    height:30px;
+    border-radius:10px;
+    padding:0 10px;
+    border:2px solid black;
+}
+.inputelement label{
+    margin-right:80px;
+    font-size:24px;
+}
+.register-complaint{
+    background-color:rgba(208, 225, 251, 1);
+    border:0.7px solid rgba(0,0,0,0.75);
+    height:84px;
+    width:194px;
+    border-radius:50px;
+    font-size:25px;
+    align-self:center;
+    margin-top:20px;
+}
+.register-complaint:hover{
+    background-color: black;
+    color:#D0E1FB;
+    cursor: pointer;
+}
+#flinput{
+    margin-left: 86px;
+}
+#cateinput{
+    margin-left: 45px;
+    padding: 16px;
+    width: 320px;
+}
+#anycommentlabel{
+    padding-left: 220px;
+}
+#anycommentinput{
+    width: 244px;
+}
+#complaintinput{
+    width: 280px;
+    padding: 16px;
+}

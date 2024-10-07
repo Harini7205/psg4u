@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+.events-page{
+    font-family:'Karla';
+}
+.eventUpdates{
+    text-align:center;
+}
+.eventdetails{
+    background-color: rgba(60, 101, 206, 0.08);
+    padding-left:40px;
+}
+.carousel{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    overflow:hidden;
+    flex-wrap:no-wrap;
+    padding:20px 0 40px 0;
+    position:relative;
+}
+.detail-title{
+    padding-top:20px;
+    text-align:left;
+    font-size:32px;
+}
+.event{
+    background-color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:30px;
+    height:400px;
+    min-width:90%;
+    width:90%;
+    transition:transform 1s ease;
+}
+.event.active{
+    transform:translateX(-100%);
+}
+.event .half1 img{
+    height:400px;
+    width:400px;
+}
+.prev-button,
+.next-button {
+    position: absolute;
+    top:50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    z-index: 1;
+}
+.prev-button {
+    left: 10px;
+}
+.next-button {
+    right: 10px;
+}
+.prev-button:hover,
+.next-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.carousel-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+}
+.event-monthly img{
+    height:300px;
+    width:300px;
+    margin:0;
+    padding:0;
+}
+.event-monthly .event-name{
+    font-size:22px;
+    font-weight:bold;
+    margin:10px 0 0 0;
+}
+.event-monthly .event-date-time{
+    margin:8px 0 20px 0;
+}
+.anchor-ele{
+    text-decoration: none;
+    color:black;
+}

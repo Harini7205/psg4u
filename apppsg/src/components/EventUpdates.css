@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+.raise-query-page{
+    font-family:'Karla';
+}
+.title-page{
+    text-align:center;
+    font-size:36px;
+}
+.raiseQueryBar{
+    margin:20px;
+    display:flex;
+    justify-content:space-between;
+}
+.nav-list-raise-query{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:50px;
+}
+.raiseQueryBar a{
+    font-size:24px;
+    text-decoration: none;
+    color:black;
+}
+.raiseQueryBar a:hover{
+    text-decoration: underline;
+}
+.eventupdatesform{
+    background-color: rgba(60,101,206,0.2);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.event-updates{
+    width:60%;
+    display:flex;
+    padding:40px 50px 30px 50px;   
+}
+.left-half{
+    width:50%;
+}
+.left-half img{
+    width:300px;
+    height:300px;
+    padding-left:30px;
+}
+.left-half .link-container{
+    margin:30px 0;
+}
+.left-half p{
+    font-size:24px;
+    margin:10px 0;
+}
+.left-half .link{
+    text-decoration:underline;
+    padding-left:40px;
+}
+.left-half .link:hover{
+    cursor:pointer;
+}
+.right-half{
+    width:50%;
+    padding-left:200px;
+}
+.right-half h3{
+    font-size:36px;
+}
+.right-half p{
+    font-size:24px;
+}
+.design{
+    display:flex;
+    flex-direction:column;
+    position:absolute;
+    top:362px;
+    left:780px;
+}
+.cir1{
+    position:absolute;
+    top:30px;
+    left:10px;
+    background-color:rgba(18,47,149,0.5);
+    height:32px;
+    width:32px;
+    border-radius: 50%;
+}
+.cir2{
+    position:absolute;
+    top:85px;
+    left:10px;
+    background-color:rgba(18,47,149,0.5);
+    height:32px;
+    width:32px;
+    border-radius: 50%;
+}
+.cir3{
+    position:absolute;
+    top:140px;
+    left:10px;
+    background-color:rgba(18,47,149,0.5);
+    height:32px;
+    width:32px;
+    border-radius: 50%;
+}
+.design .line{
+    border-left:3px solid rgb(105,155,247);
+    position:absolute;
+    left:25px;
+    top:46px;
+    height:125px;
+    width:1px;
+    background-color: rgb(105,155,247);
+}

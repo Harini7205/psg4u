@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+
+html{
+  font-family:'karla';
+}
+.navbar li{
+  display: inline;
+  padding: 20px;
+  font-size: 18px;
+  margin-right: 100px;
+}
+.navbar ul{
+  margin-left: 30%;
+  margin-right: 20px;
+  list-style-type: none;
+  padding : 0;
+}
+.navbar li:hover{
+  text-decoration: underline;
+  cursor : pointer;
+}
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.homelogo{
+  width:18%;
+  margin: 10px 0 0 10px;
+}
+.navbar .logout{
+    border-radius: 45px;
+    background-color: #6C8BBA;
+    color: white;
+    font-size: 19px;
+    cursor: pointer;
+    padding-left: 35px;
+    padding-right: 35px;
+    box-shadow:0px 4px 5px #000000;
+}
+.navbar .logout:hover{
+  text-decoration: none;
+  background-color: #000000;
+  color:#D0E1FB;
+}
+.homeimg{ 
+  position: relative;
+  top: 10px;
+  left: 20px;
+  width: 35px;
+  height: 35px;
+  margin-right:8px;
+}
+.personimg{
+  position: relative;
+  top: 10px;
+  left: 20px;
+  width: 35px;
+  height: 35px;
+  margin-right:8px;
+}
+.studies{
+  background-image: linear-gradient(rgba(255, 255, 255, 0.715), rgba(255, 255, 255, 0.715)),  url('../../public/images/mainimg.png');
+  width: 75%;
+  height: 435px;
+  margin-left: 13%;
+  margin-top: 5%;
+  background-size: cover;
+  font-size: 20px;
+  padding-top: 10px;
+  box-shadow: 0px 4px 25px 0px #00000040;
+  position: relative;
+}
+.studies p{
+  margin-left: 30%;
+  padding: 20px;
+}
+.emoji1{
+  position: absolute;
+  top: 23%;
+  left: 27%;
+  width: 40px;
+  height: 40px;
+}
+.emoji2{
+  position: absolute;
+  top: 43%;
+  left: 27%;
+  width: 40px;
+  height: 40px;
+}
+.emoji3{
+  position: absolute;
+  top: 63%;
+  left: 27%;
+  width: 40px;
+  height: 40px;
+}
+.emoji4{
+  position: absolute;
+  top: 81%;
+  left: 27%;
+  width: 40px;
+  height: 40px;
+}
+.studies .title{
+  width: 140px;
+  height: 60px;
+  background-color: #699BF773;
+  position:relative;
+  left: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.clip{
+  position:absolute;
+  top: -40px;
+  width: 80px;
+  height: 80px;
+}
+#query{
+  height: 250px;
+  position: relative;
+}
+#query .rclip{
+  position:absolute;
+  top: -40px;
+  width: 80px;
+  height: 80px;
+}
+#query .emoji1{
+  top: 40%;
+}
+#query .emoji2{
+  top: 73%;
+}
+#canteen{
+  height: 250px;
+  margin-bottom: 100px;
+  position: relative;
+}
+#canteen .gclip{
+  position:absolute;
+  top: -40px;
+  width: 80px;
+  height: 80px;
+}
+#canteen .emoji1{
+  top: 40%;
+}
+#canteen .emoji2{
+  top: 73%;
+}
+#query .clip{
+  top: 84%;
+}
+#canteen .clip{
+  top: 130%;
+}
+#query .title{
+  background-color: #F7696933;
+
+}
+#canteen .title{
+  background-color: #4DC16733;
+}
+.Myaccount{
+  background: #EFF5FF;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 100px;
+  border: 1px solid #000000;
+  font-size: 20px;
+  box-shadow: 0px 4px 25px 0px #00000040;
+
+}
+.Myaccount .myaccname{
+  margin-left: 90px;
+  margin-top: 50px;
+}
+.Myaccount .myaccp{
+  margin-left: 50px;
+  margin-top: 40px;
+}
+.personaccount{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  padding-top: 50px;
+  padding-left: 50px;
+}
+.editicon{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+.coin{
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  padding-left: 50px;
+  padding-top: 30px;
+}
+.points{
+  margin-left: 90px;
+  padding-top: 30px;
+}
+.editdetails{
+  margin-left: 90px;
+  padding-top: 30px;
+}
+.editdetails:hover{
+  cursor: pointer;
+}
+.closeimg{
+  float: right;
+  width: 30px;
+  height: 30px;
+  margin: 10px;
+}
+.closeimg:hover{
+  cursor: pointer;
+}
+#link{
+  color: black;
+  text-decoration: none;
+}
+#link:hover{
+  color:#D0E1FB;
+  cursor: pointer;
+}

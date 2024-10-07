@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap');
+.suggest-form-page{
+    font-family:'Karla';
+}
+.title-page{
+    text-align:center;
+    font-size:36px;
+}
+.suggestFormBar{
+    margin:20px;
+    display:flex;
+    justify-content:space-between;
+}
+.nav-list-suggest-form{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:50px;
+}
+.suggestFormBar a{
+    font-size:24px;
+    text-decoration: none;
+    color:black;
+}
+.suggestFormBar a:hover{
+    text-decoration: underline;
+}
+.suggestform{
+    background-image:url('../../public/images/raisequerybg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding:20px 100px 40px 100px;
+}
+.queryform{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+}
+.select-option{
+    width:300px;
+    height:30px;
+    border-radius:10px;
+    padding:0 10px;
+    border:2px solid black;
+}
+.type-text{
+    width:600px;
+    height:30px;
+    border-radius:10px;
+    padding:0 10px;
+    border:2px solid black;
+}
+.inputelement label{
+    margin-right:80px;
+    font-size:24px;
+    font-weight:600;
+}
+.submit-suggestion{
+    background-color:rgba(208, 225, 251, 1);
+    border:0.7px solid rgba(0,0,0,0.75);
+    height:84px;
+    width:194px;
+    border-radius:50px;
+    font-size:25px;
+    align-self:center;
+    margin-top:20px;
+}
+.submit-suggestion:hover{
+    background-color: black;
+    cursor: pointer;
+    color:#D0E1FB;
+}
+#subjectinput{
+    margin-left: 50px;
+    margin-bottom: 20px;
+}
+.optional{
+    font-size: 15px;
+    position: absolute;
+    top: 80%;
+    left: 6.5%;
+    font-weight: bold;
+}
+#yournameinput{
+    margin-left: 70px;
+    margin-top: 20px;
+    width: 280px;
+}
+#resourceinput{
+    margin-left: 90px;
+    margin-bottom: 20px;
+    width: 500px;
+}
+#subjectinput{
+    margin-left: 113px;
+    padding: 16px;
+    margin-top: 40px;
+}
+#anyinput{
+    width: 500px;
+}

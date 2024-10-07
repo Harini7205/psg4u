@@ -1,0 +1,176 @@
+.wholepage{
+  overflow-x: hidden;
+  background: white;
+}
+.homebody{
+    background-image: url('../../public/images/Home_bg.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 100vh;
+    margin-bottom: 0;
+  }
+  .home h1{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    position: relative;
+    top : 100px;
+    font-size: 50px; /* Set font size to match Figma */
+    font-weight: 500;
+  }
+  .home i{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    position: relative;
+    top : 100px;
+    margin-top: 30px;
+    font-weight: 450;
+    font-size: 40px;
+  }
+  .homebody li{
+    display: inline;
+    padding: 30px;
+    font-size: 18px;
+  }
+  .homebody ul{
+    margin-left: 30%;
+    margin-right: 20px;
+    list-style-type: none;
+    padding : 0;
+  }
+  .homebody li:hover{
+    text-decoration: underline;
+    cursor : pointer;
+  }
+  .homebody nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .homelogo{
+    width:18%;
+    margin: 10px 0 0 10px;
+  }
+.loginbutton{
+    display: block; 
+    margin: 150px auto; 
+    width: 180px;
+    height : 80px;
+    background-color: #6C8BBA;
+    border-width:2px;
+    border-radius: 10px;
+    border-color: black;
+    border-style: solid;
+    color:black;
+    font-weight: 300;
+    text-align:center;
+    font-size: 29px;
+    transition:all 0.2s;
+    cursor: pointer;
+    box-shadow:0 2px 2px 0;
+}
+.loginbutton span{
+  cursor:pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.2s;
+  color: black;
+}
+.loginbutton span:after{
+  content:'\00bb';
+  position: absolute;
+  opacity:0;
+  top:0;
+  transition: 0.3s;
+}
+.loginbutton:hover span{
+  padding-right: 30px;
+  color:#6C8BBA;
+  background-color: black;    
+}
+.loginbutton:hover span:after{
+  opacity:1;
+  right: 0;
+}
+.loginbutton:hover{
+  background-color: black;
+}
+.link{
+  text-decoration: none;
+}
+.hrline{
+  line-height: normal;
+  color: black;
+}
+.psg4u_content{
+  position: relative;
+  background-color: white;
+}
+.content{
+  
+  background-color: #f7f7f7;
+  margin:40px ;
+  border-top-color: rgba(83, 143, 255, 0.3);
+  border-left-color: rgba(83, 143, 255, 0.3);
+  border-style: solid;
+  border-width: 13px;
+  padding: 100px;
+  font-weight: 200;
+  font-size: 25px;
+  border-style: solid;
+  border-bottom-color: rgba(116, 164, 255, 1);
+  border-right-color: rgba(116, 164, 255, 1);
+}
+.img1, .img2,.img3,.img4{
+  margin-right:30px;
+  width:50px;
+  height:50px;
+  margin-top:20px;
+  display:inline;
+}
+.content h1{
+  font-size: 50px; /* Set font size to match Figma */
+  font-weight: 500;
+}
+.content i{
+  font-size: 35px ;
+}
+.foot{
+  border-top: black;
+  border-style: solid;
+  border-width: 1px 0 0 0;
+  background-color: #3c65ce0e;
+  height:200px;
+  display:flex;
+  justify-content: center;
+  margin-top:100px;
+  margin-bottom : 10px;
+  font-size:20px;
+}
+.help{
+  text-decoration: underline;
+}
+.foot_img{
+  width:30px;
+  height: 30px;
+}
+.left_side_content{
+  position: relative;
+  margin: 60px 60px 0 4px;
+}
+.right_side_content{
+  position: relative;
+  margin:20px 20px 0 40px;
+  display:flex;
+  justify-content: center;
+}
+.center_content{
+  position: relative;
+  margin:80px; 
+}
+.right_list{
+  list-style-type: none;
+  padding:10px;
+}
