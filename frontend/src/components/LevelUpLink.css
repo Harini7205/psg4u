@@ -60,25 +60,36 @@
     padding-left:60px;
     margin-bottom:30px;
 }
-.filter-input img{
-    height:30px;
-    width:30px;
-    position:absolute;
-    top:18px;
-    left:15px;
+.suggestions-list {
+    position: absolute;
+    background: white;
+    width: 100%; 
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    z-index: 1000;
+    margin-top: 65px;
+    border-radius: 20px;
 }
-.filterbar-input{
+.suggestions-list li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+.suggestions-list li:hover {
+    background-color: #f0f0f0;
+}
+.search-button{
     font-size:22px;
     height:60px;
     width:150px;
     border-radius:20px;
-    padding-left:60px;
     margin-bottom:30px;
-}
-.filter-input{
-    display:flex;
-    gap:10px;
-    position: relative;
+    text-align: center;
 }
 .link-rectangle{
     height:250px;
