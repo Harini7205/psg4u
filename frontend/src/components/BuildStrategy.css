@@ -1,0 +1,93 @@
+.navdown{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),  url('../../public/images/mainimg.png');
+    height: 40px;
+    padding: 40px;
+    background-size: cover;
+    background-repeat: repeat;
+    height: 100vh;
+    padding-bottom: 200px;
+}
+
+/* Main Content */
+.strategy-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+/* Form Container */
+.form-container {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+    backdrop-filter: blur(8px);
+}
+
+/* Input Fields */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    color: white;
+    font-weight: bold;
+}
+
+.input-field {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* CGPA Input Container */
+.cgpa-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cgpa-input-container label {
+    color: white;
+    font-weight: bold;
+}
+
+/* Predict Button */
+.predict-button {
+    background: #27ae60;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+    margin-top: 15px;
+}
+
+.predict-button:hover {
+    background: #219150;
+}
+
+/* Result Display */
+.result-container {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

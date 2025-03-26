@@ -1,18 +1,20 @@
 from django.http import JsonResponse
 from django.views import View
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
 import json
-
-from django.contrib.auth import logout
-
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
 from rest_framework import status
-from rest_framework_simplejwt.tokens import RefreshToken
+from rest_framework.decorators import api_view
+import numpy as np
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+data = pd.read_csv("grades_dataset.csv")
 
 class SemesterGradesView(View):
     def get(self, request, semester_number):
@@ -107,3 +109,45 @@ class LogoutView(View):
     def post(self, request):
         logout(request)
         return JsonResponse({'message': 'Logout successful'}, status=200)
+    
+def predict_ca2_and_sem_grades(ca1_marks, current_cgpa, expected_cgpa):
+    X = data[['ca1']].values.reshape(-1, 1)
+    y_ca2 = data['ca2'].values
+    y_semester = data['semester'].values
+
+    model_ca2 = LinearRegression()
+    model_semester = LinearRegression()
+
+    model_ca2.fit(X, y_ca2)
+    model_semester.fit(X, y_semester)
+
+    ca2_marks = model_ca2.predict(np.array(ca1_marks).reshape(-1, 1))
+    semester_grades = model_semester.predict(np.array(ca1_marks).reshape(-1, 1))
+
+    total_marks_needed = expected_cgpa * len(ca1_marks) * 10  
+    current_total_marks = current_cgpa * len(ca1_marks) * 10
+    required_marks = total_marks_needed - current_total_marks
+
+    for i in range(len(semester_grades)):
+        total = ca2_marks[i] + semester_grades[i]
+        if total < required_marks:
+            additional_needed = required_marks - total
+            semester_grades[i] += additional_needed / len(semester_grades)
+
+    ca2_marks = np.clip(ca2_marks, 0, 50)
+    semester_grades = np.clip(semester_grades, 0, 100)
+
+    return ca2_marks.tolist(), semester_grades.tolist()
+
+@api_view(['POST'])
+def predict_grades(request):
+    ca1_marks = request.data.get("ca1_marks", [])
+    current_cgpa = request.data.get("current_cgpa", 7.0)
+    expected_cgpa = request.data.get("expected_cgpa", 8.0)
+
+    ca2_marks, semester_grades = predict_ca2_and_sem_grades(ca1_marks, current_cgpa, expected_cgpa)
+
+    return Response({
+        "ca2_marks": ca2_marks,
+        "semester_grades": semester_grades,
+    })

@@ -20,6 +20,7 @@ import LevelUpLink from './components/LevelUpLink';
 import EventUpdates from './components/EventUpdates';
 import { Button } from './components/Button.jsx';
 import Register from './components/Register.jsx';
+import BuildStrategy from './components/BuildStrategy.jsx';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="/eventupdates" element={<EventUpdates />} />
           <Route path="/button" element={<Button />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/buildstrategy" element={<BuildStrategy />} />
         </Routes>
       </Router>
     </div>

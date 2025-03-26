@@ -8,3 +8,7 @@ PyJWT==2.9.0
 sqlparse==0.5.3
 tzdata==2025.2
 psycopg2-binary
+numpy 
+pandas
+scikit-learn
+python-dotenv

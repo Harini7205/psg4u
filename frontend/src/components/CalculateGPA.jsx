@@ -58,14 +58,10 @@ export const CalculateGPA = () => {
   useEffect(() => {
     fetchSemesterGrades(semester);
   }, [semester]);
-  const handleBuildStrategy = () => {
-    // Redirect to the Streamlit app URL
-    window.location.href = 'http://localhost:8501'; // Update this URL with the actual Streamlit app URL
-  };
   return (
     <div className='calculategpa'>
         <nav className="raiseQueryBar">
-                <img src="/images/logo_psg4u.png" alt="psg4u logo" className="logo-events-page" />
+            <img src="/images/logo_psg4u.png" alt="psg4u logo" className="logo-events-page" />
                 <div className="nav-list-raise-query">
                     <div className="nav">
                         <img src="/images/homelogo.png" className="logo-events" alt="homelogo" />
@@ -73,7 +69,7 @@ export const CalculateGPA = () => {
                     </div>
                     <div className="nav">
                         <img src="/images/progress-check.png" className="logo-events" alt="trackstatuslogo" />
-                        <a href="#strategy" onClick={handleBuildStrategy}>Build Strategy</a>
+                        <p><Link to={'/buildstrategy'} class="link">Build Strategy</Link></p>
                     </div>
                     <Link to={'/'} className="link" id="link"><Button name='Logout'/></Link>
                 </div>
