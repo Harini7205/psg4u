@@ -8,11 +8,14 @@ import json
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import make_password
+from .models import User
 from rest_framework import status
 from rest_framework.decorators import api_view
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+from django.db import connection
 
 data = pd.read_csv("grades_dataset.csv")
 
@@ -71,22 +74,22 @@ class SemesterGradesView(View):
             ],
         }
 
-        # Fetch the grades for the specified semester
         grades = semester_data.get(semester_number, [])
         return JsonResponse({'subjects': grades})
 
-
-# Registration View
 class RegisterView(APIView):
     def post(self, request):
-        username = request.data.get('username')
+        roll_no = request.data.get('username')
         password = request.data.get('password')
-        if User.objects.filter(username=username).exists():
-            return Response({"error": "Username already exists"}, status=status.HTTP_400_BAD_REQUEST)
-        
-        user = User.objects.create_user(username=username, password=password)
-        return Response({"message": "User registered successfully"}, status=status.HTTP_201_CREATED)
+        semester = request.data.get('semester', 1)
+        points = request.data.get('points', 0.0)
 
+        if User.objects.filter(rollno=roll_no).exists():
+            return Response({"error": "Roll number already exists"}, status=status.HTTP_400_BAD_REQUEST)
+
+        user = User.objects.create_user(rollno=roll_no, password=password, semester_number=semester, points=points)
+        return Response({"message": "User registered successfully"}, status=status.HTTP_201_CREATED)
+    
 @method_decorator(csrf_exempt, name='dispatch')
 class LoginView(View):
     def post(self, request, *args, **kwargs):
@@ -94,14 +97,11 @@ class LoginView(View):
         username = data.get('username')
         password = data.get('password')
 
-        # Authenticate user
         user = authenticate(username=username, password=password)
         if user is not None:
-            # Successful login
             login(request, user)
             return JsonResponse({'message': 'Login successful'}, status=200)
         else:
-            # Invalid credentials
             return JsonResponse({'error': 'Invalid credentials'}, status=400)
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -109,7 +109,7 @@ class LogoutView(View):
     def post(self, request):
         logout(request)
         return JsonResponse({'message': 'Logout successful'}, status=200)
-    
+
 def predict_ca2_and_sem_grades(ca1_marks, current_cgpa, expected_cgpa):
     X = data[['ca1']].values.reshape(-1, 1)
     y_ca2 = data['ca2'].values

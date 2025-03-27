@@ -88,14 +88,14 @@ function BuildStrategy() {
         <h2>CA2 Marks:</h2>
         <ul>
             {result.ca2_marks.map((mark, index) => (
-                <li key={index}>Subject {index + 1}: {mark}</li>
+                <li key={index}>{subjects[index]}: {mark}</li>
             ))}
         </ul>
 
         <h2>Semester Grades:</h2>
         <ul>
             {result.semester_grades.map((grade, index) => (
-                <li key={index}>Subject {index + 1}: {grade}</li>
+                <li key={index}>{subjects[index]}: {grade}</li>
             ))}
         </ul>
     </div>
