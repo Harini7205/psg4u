@@ -22,10 +22,28 @@ from django.http import JsonResponse
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from .models import Subsemester, Resource
 
 # Store OTPs temporarily (you can use a database model instead)
 
 data = pd.read_csv("grades_dataset.csv")
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.db import connection
+
+@api_view(['GET'])
+def get_subjects(request):
+    semester_no = request.GET.get('semester_no')
+    
+    if not semester_no:
+        return Response({"error": "Semester number is required"}, status=400)
+
+    with connection.cursor() as cursor:
+        cursor.execute("SELECT subject_name FROM subjects WHERE semester = %s", [semester_no])
+        subjects = [row[0] for row in cursor.fetchall()]
+
+    return Response({"subjects": subjects}, status=200)
 
 class SemesterGradesView(View):
     def get(self, request, semester_number):
@@ -48,7 +66,7 @@ class SemesterGradesView(View):
                 {"subject_name": "Discrete Mathematics", "credits": 3, "grade": None},
                 {"subject_name": "Chemistry", "credits": 2, "grade": None},
                 {"subject_name": "C Lab", "credits": 2, "grade": None},
-                {"subject_name": "EG", "credits": 2, "grade": None},
+                {"subject_name": "Engineering Graphics", "credits": 2, "grade": None},
             ],
             3: [
                 {"subject_name": "Linear Algebra", "credits": 4, "grade": None},
@@ -59,7 +77,6 @@ class SemesterGradesView(View):
                 {"subject_name": "Economics", "credits": 3, "grade": None},
                 {"subject_name": "DS Lab", "credits": 2, "grade": None},
                 {"subject_name": "Java Lab", "credits": 2, "grade": None},
-                {"subject_name": "English", "credits": 2, "grade": None},
             ],
             4: [
                 {"subject_name": "Optimization Techniques", "credits": 3, "grade": None},
@@ -69,7 +86,6 @@ class SemesterGradesView(View):
                 {"subject_name": "Database Systems", "credits": 3, "grade": None},
                 {"subject_name": "ML Lab", "credits": 2, "grade": None},
                 {"subject_name": "DBS Lab", "credits": 2, "grade": None},
-                {"subject_name": "English", "credits": 1, "grade": None},
             ],
             5: [
                 {"subject_name": "Artificial Intelligence", "credits": 4, "grade": None},
@@ -210,3 +226,13 @@ def reset_password(request):
         return Response({"message": "Password reset successful"}, status=status.HTTP_200_OK)
     except User.DoesNotExist:
         return Response({"error": "User not found"}, status=status.HTTP_400_BAD_REQUEST)
+
+@csrf_exempt
+def get_subjects_by_semester(request, semester):
+    if request.method == "GET":
+        subjects = Subsemester.objects.filter(semester=semester).values_list("subject_name", flat=True)
+        dict={}
+        for subject in subjects:
+            resources = Resource.objects.filter(subject=subject).values_list("url", flat=True)
+            dict[subject]=list(resources)
+        return JsonResponse(dict, safe=False)

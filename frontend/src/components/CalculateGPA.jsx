@@ -20,7 +20,9 @@ export const CalculateGPA = () => {
       setSubjects([]); // Reset subjects on error
     }
   };
+  
 
+  
   const handleSemesterChange = (e) => {
     const selectedSemester = parseInt(e.target.value, 10); // Convert to integer
     setSemester(selectedSemester);

@@ -12,3 +12,14 @@ class Subject(models.Model):
     grade = models.FloatField()
     credits = models.FloatField()
 
+class Subsemester(models.Model):
+    subject_name = models.CharField(max_length=255)
+    semester = models.IntegerField()
+    class Meta:
+        db_table = 'app_subsemesters'
+
+class Resource(models.Model):
+    subject = models.CharField(max_length=255)
+    url = models.URLField()
+    class Meta:
+        db_table ='app_resources'

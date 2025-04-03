@@ -1,50 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import "./LevelUpLink.css";
 import { Button } from "./Button";
 
-const linksData = [
-    { category: "Physics-1", links: ["https://byjus.com/physics/electromagnetic-radiation/", "https://www.electronicshub.org/led-light-emitting-diode/"] },
-    { category: "COA", links: ["https://www.geeksforgeeks.org/computer-organization-von-neumann-architecture/", "https://www.javatpoint.com/types-of-register-in-computer-organization"] },
-    { category: "OS", links: ["https://www.tutorialspoint.com/producer-consumer-problem-in-c", "https://in.video.search.yahoo.com/search/video?fr=crmas&ei=UTF-8&p=round+robin&vm=r#id=1&vid=ba180da704796ffce0f4f4fcc6abbe62&action=click"] },
-    { category: "DBMS", links: ["https://www.geeksforgeeks.org/dbms/", "https://www.w3schools.in/dbms/relational-algebra"] }
-];
-
-const categoryColors = {
-    "Physics-1": "one",
-    "COA": "two",
-    "OS": "three",
-    "DBMS": "four"
-};
-
 function LevelUpLink() {
-    const [query, setQuery] = useState("");
-    const [filteredLinks, setFilteredLinks] = useState(linksData);
-    const [suggestions, setSuggestions] = useState([]);
+    const [semester, setSemester] = useState(""); // Stores selected semester
+    const [query, setQuery] = useState(""); // Stores search query
+    const [subjectResources, setSubjectResources] = useState({}); // Stores subject-resource mapping
+    const [filteredSubjects, setFilteredSubjects] = useState([]); // Stores subjects to display
 
-    const handleInputChange = (e) => {
+    useEffect(() => {
+        if (semester) {
+            fetch(`http://127.0.0.1:8000/api/cgpa/subjects/${semester}/`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setSubjectResources(data); // Store full subject-resource mapping
+                    setFilteredSubjects(Object.keys(data)); // Initialize filtered subjects
+                })
+                .catch((error) => console.error("Error fetching subjects:", error));
+        } else {
+            setSubjectResources({});
+            setFilteredSubjects([]);
+        }
+    }, [semester]);
+
+    const handleSubjectSearch = (e) => {
         const value = e.target.value;
         setQuery(value);
 
         if (value.length > 0) {
-            const filtered = linksData
-                .filter((item) =>
-                    item.category.toLowerCase().includes(value.toLowerCase())
-                )
-                .map((item) => item.category);
-            setSuggestions(filtered.slice(0, 5));
+            const filtered = Object.keys(subjectResources).filter((subject) =>
+                subject.toLowerCase().includes(value.toLowerCase())
+            );
+            setFilteredSubjects(filtered);
         } else {
-            setSuggestions([]);
+            setFilteredSubjects(Object.keys(subjectResources));
         }
-    };
-
-    const handleSearch = () => {
-        const results = linksData.filter((item) =>
-            item.category.toLowerCase().includes(query.toLowerCase())
-        );
-        setSuggestions([]);
-        setFilteredLinks(results);
     };
 
     return (
@@ -66,40 +58,48 @@ function LevelUpLink() {
 
             <div className="level-up-link img">
                 <p className="title">LEVEL-UP LINKS</p>
+
+                {/* Dropdown for Semester Selection */}
+                <select onChange={(e) => setSemester(e.target.value)} className="semester-dropdown">
+                    <option value="">Select Semester</option>
+                    {[1, 2, 3, 4, 5].map((num) => (
+                        <option key={num} value={num}>{num}</option>
+                    ))}
+                </select>
+
+                {/* Search bar for subjects */}
                 <div className="searchbar">
                     <div className="search-bar">
                         <div className="search-input">
                             <img src="/images/search_icon.png" alt="search" />
                             <input
                                 type="text"
-                                placeholder="SEARCH"
+                                placeholder="SEARCH SUBJECT"
                                 className="searchbar-input"
                                 value={query}
-                                onChange={handleInputChange}
+                                onChange={handleSubjectSearch}
                             />
-                            {suggestions.length > 0 && (
-                                <ul className="suggestions-list">
-                                    {suggestions.map((suggestion, index) => (
-                                        <li key={index} onClick={() => setQuery(suggestion)}>
-                                            {suggestion}
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
                         </div>
-                        <button onClick={handleSearch}className="search-button">Search</button>
                     </div>
                 </div>
 
-                {filteredLinks.map((item, index) => (
-                    <div className={`link-rectangle ${index % 2 === 0 ? 'left' : 'right'}`} key={index}>
-                        <div className={`circle1 ${categoryColors[item.category] || 'one'}`}>{item.category}</div>
-                        <div className={`circle2 ${categoryColors[item.category] || 'one'}`}></div>
-                        {item.links.map((link, idx) => (
-                            <p key={idx}><a href={link} target="_blank" rel="noopener noreferrer">{link}</a></p>
-                        ))}
-                    </div>
-                ))}
+                {/* Display Resources */}
+                <div className="url-list" style={{width:800,margin:"auto"}}>
+                    {filteredSubjects.length > 0 ? (
+                        filteredSubjects.map((subject, index) => (
+                            <div key={index}>
+                                <h3>{subject}</h3>
+                                {subjectResources[subject].map((link, linkIndex) => (
+                                    <p key={linkIndex}>
+                                        <a href={link} target="_blank" rel="noopener noreferrer">{link}</a>
+                                    </p>
+                                ))}
+                            </div>
+                        ))
+                    ) : (
+                        <p>No subjects found</p>
+                    )}
+                </div>
             </div>
 
             <Footer />

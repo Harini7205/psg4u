@@ -6,7 +6,6 @@ import { Button } from "./Button";
 
 function ConfirmPassword() {
     const [username, setUsername] = useState("");
-    const [otp, setOtp] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
