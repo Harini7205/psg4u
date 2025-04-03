@@ -54,7 +54,13 @@ form{
 }
 .textbox{
     position:relative;
+    margin-left: 30px;
 }
+.textbox select {
+    padding-left: 60px;  /* Same padding as input fields */
+    appearance: none; /* Remove default dropdown arrow */
+}
+
 .input{
     height:65px;
     width:468px;
@@ -64,12 +70,12 @@ form{
     font-size:20px;
 }
 .textbox input{
-    padding-left:60px;
+    padding-left:200px;
 }
 .icon{
     width:40px;
     height:40px;
-    position:absolute;
+    position:relative;
     top:12px;
     left:10px;
 }

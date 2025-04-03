@@ -103,9 +103,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
+        'USER': os.getenv('DB_USERNAME'),
         'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
+        'HOST': os.getenv('DB_HOSTNAME'),
         'PORT': os.getenv('DB_PORT'),
     }
 }
@@ -157,3 +157,12 @@ CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # React app URL
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True  # Ensure this matches the working project
+EMAIL_USE_SSL = False  # Should be False
+EMAIL_PORT = 587  # Should match
+EMAIL_HOST_USER = os.getenv('MAIL_USERNAME')  
+EMAIL_HOST_PASSWORD = os.getenv('MAIL_PASSWORD') 
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

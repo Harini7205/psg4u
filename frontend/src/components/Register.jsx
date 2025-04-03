@@ -7,6 +7,8 @@ import { Button } from "./Button";
 function Register() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [semester, setSemester] = useState('');
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -15,7 +17,7 @@ function Register() {
     const response = await fetch('http://localhost:8000/api/cgpa/register/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, password}),
     });
 
     if (response.ok) {
@@ -54,6 +56,19 @@ function Register() {
                 <input type="password" name="password" className="input" value={password} onChange={(e) => setPassword(e.target.value)} />
               </div>
             </div>
+            <div className="row">
+                <label>Semester:</label>
+                <div className="dropdown">
+                  <img src='/images/semester.png' alt='semester-icon' className='icon' />
+                  <select className="input" value={semester} onChange={(e) => setSemester(e.target.value)}>
+                    <option value="" disabled></option>
+                    {[...Array(8)].map((_, i) => (
+                      <option key={i + 1} value={i + 1}>{i + 1}</option>
+                    ))}
+                  </select>
+                </div>
+            </div>
+
             <Button name="Submit" />
             <a href="/login" className="link">Already a user? Signin</a>
           </form>

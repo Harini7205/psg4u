@@ -13,6 +13,17 @@ from rest_framework.decorators import api_view
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression
+import random
+from django.core.mail import send_mail
+from django.conf import settings
+from django.contrib.auth.tokens import default_token_generator
+from django.contrib.auth.models import User
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
+
+# Store OTPs temporarily (you can use a database model instead)
 
 data = pd.read_csv("grades_dataset.csv")
 
@@ -85,6 +96,7 @@ class RegisterView(APIView):
             return Response({"error": "Username already exists"}, status=status.HTTP_400_BAD_REQUEST)
         
         user = User.objects.create_user(username=username, password=password)
+        user.save()
         return Response({"message": "User registered successfully"}, status=status.HTTP_201_CREATED)
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -151,3 +163,50 @@ def predict_grades(request):
         "ca2_marks": ca2_marks,
         "semester_grades": semester_grades,
     })
+
+# Temporary storage for OTPs (Consider using Redis or database for production)
+otp_storage = {}
+
+@api_view(['POST'])
+def send_otp(request):
+    """ Send OTP to the provided email """
+    email = request.data.get("email")
+
+    otp = random.randint(100000, 999999)
+    otp_storage[email] = otp  # Store OTP temporarily
+    # Send OTP via email
+    send_mail(
+        'Password Reset OTP',
+        f'Your OTP for password reset is {otp}. Do not share it with anyone.',
+        settings.DEFAULT_FROM_EMAIL,
+        [email],
+        fail_silently=False,
+    )
+
+    return Response({"message": "OTP sent successfully"}, status=status.HTTP_200_OK)
+
+
+@api_view(['POST'])
+def verify_otp(request):
+    """ Verify OTP entered by the user """
+    email = request.data.get("email")
+    otp = int(request.data.get("otp"))
+    if email in otp_storage and otp_storage[email] == otp:
+        return Response({"message": "OTP verified successfully"}, status=status.HTTP_200_OK)
+    else:
+        return Response({"error": "Invalid OTP"}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def reset_password(request):
+    """ Reset the password using username after OTP verification """
+    username = request.data.get("username")
+    new_password = request.data.get("new_password")
+
+    try:
+        user = User.objects.get(username=username)  # Find user by username
+        user.set_password(new_password)
+        user.save()
+        return Response({"message": "Password reset successful"}, status=status.HTTP_200_OK)
+    except User.DoesNotExist:
+        return Response({"error": "User not found"}, status=status.HTTP_400_BAD_REQUEST)

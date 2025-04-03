@@ -54,9 +54,9 @@ function BuildStrategy() {
                                 value={ca1Marks[index]} 
                                 onChange={(e) => {
                                     const newMarks = [...ca1Marks];
-                                    newMarks[index] = Number(e.target.value);
+                                    newMarks[index] = e.target.value === "" ? "" : Number(e.target.value); // Clears old value
                                     setCa1Marks(newMarks);
-                                }} 
+                                }}                                
                                 className="input-field"
                             />
                         </div>

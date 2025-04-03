@@ -48,6 +48,7 @@ function App() {
           <Route path="/button" element={<Button />} />
           <Route path="/register" element={<Register />} />
           <Route path="/buildstrategy" element={<BuildStrategy />} />
+          <Route path="/forgotpassword" element={<ForgotPassword />} />
         </Routes>
       </Router>
     </div>
