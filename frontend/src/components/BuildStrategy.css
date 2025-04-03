@@ -1,5 +1,6 @@
 BuildStrategy.css
 ----------------------
+
 .navdown{
     background-image: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),  url('../../public/images/mainimg.png');
     height: 40px;
@@ -32,8 +33,12 @@ BuildStrategy.css
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     width: 80%;
     max-width: 400px;
+    font-family:sans-serif;
     text-align: center;
     backdrop-filter: blur(8px);
+    border-color: rgb(198, 198, 198);
+    border-width: 2px;
+    border-style:solid;
 }
 
 /* Input Fields */
@@ -55,8 +60,9 @@ BuildStrategy.css
     flex: 1;
     max-width: 100px;
     padding: 10px;
-    border: none;
-    border-radius: 5px;
+    border-color: rgb(198, 198, 198);
+    border-width: 2px;
+    border-style:solid;    border-radius: 5px;
     font-size: 16px;
     text-align: center;
 }
@@ -69,6 +75,8 @@ BuildStrategy.css
     width: 100%;
     max-width: 400px;
     align-items: center;
+    margin-top: 50px;
+    
 }
 
 .cgpa-input-group {
@@ -121,28 +129,71 @@ BuildStrategy.css
 /* Result Table */
 .result-container {
     margin-top: 20px;
-    padding: 15px;
-    background: white;
-    border-radius: 5px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.15); /* Transparent background */
+    border-radius: 10px;
     text-align: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
+    backdrop-filter: blur(8px); /* Adds a subtle frosted effect */
 }
 
+.result-container h2 {
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Styling for list items */
+.result-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.result-container li {
+    background: rgba(255, 255, 255, 0.25);
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Table Styles */
 .result-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin-top: 15px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 .result-table th, .result-table td {
-    border: 1px solid #ddd;
-    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 12px;
     text-align: center;
+    font-size: 16px;
 }
 
 .result-table th {
     background-color: #27ae60;
     color: white;
+    font-weight: bold;
+}
+
+.result-table td {
+    color: black;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .result-container {
+        width: 90%;
+    }
 }

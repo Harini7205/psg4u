@@ -63,27 +63,48 @@ function BuildStrategy() {
                     ))}
 
                     <div className="cgpa-input-container">
-                        <label>Current CGPA:</label>
-                        <input 
-                            type="number" 
-                            value={currentCgpa} 
-                            onChange={(e) => setCurrentCgpa(Number(e.target.value))}
-                            className="input-field"
-                        />
-                        <label>Expected CGPA:</label>
-                        <input 
-                            type="number" 
-                            value={expectedCgpa} 
-                            onChange={(e) => setExpectedCgpa(Number(e.target.value))}
-                            className="input-field"
-                        />
+                    <label>Current CGPA:</label>
+<input 
+    type="number" 
+    value={currentCgpa} 
+    onChange={(e) => {
+        let value = parseFloat(e.target.value);
+        if (value >= 0 && value <= 10) {
+            setCurrentCgpa(Number(value.toFixed(1)));
+        }
+    }}
+    className="input-field"
+    min="0" 
+    max="10" 
+    step="0.1"
+/>
+
+<label>Expected CGPA:</label>
+<input 
+    type="number" 
+    value={expectedCgpa} 
+    onChange={(e) => {
+        let value = parseFloat(e.target.value);
+        if (value >= 0 && value <= 10) {
+            setExpectedCgpa(Number(value.toFixed(1)));
+        }
+    }}
+    className="input-field"
+    min="0" 
+    max="10" 
+    step="0.1"
+/>
+
                     </div>
 
                     <button onClick={handlePredict} className="predict-button">
                         Predict
                     </button>
 
-                    {result && (
+                    
+
+                </div>
+                {result && (
     <div className="result-container">
         <h2>CA2 Marks:</h2>
         <ul>
@@ -100,8 +121,6 @@ function BuildStrategy() {
         </ul>
     </div>
 )}
-
-                </div>
             </div>
             </div>
         </div>
