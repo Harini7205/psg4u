@@ -28,9 +28,8 @@ function SuggestForm() {
                         <label for="category">
                             SUBJECT
                         </label>
-                        <select name="category" className="select-option" id="subjectinput">
-                            <option>Lab</option>
-                        </select>
+                        <input type="text" className="type-text" id="resourceinput"></input>
+
                     </div>
                     <div className="inputelement">
                         <label for="category">
@@ -38,22 +37,10 @@ function SuggestForm() {
                         </label>
                         <input type="text" className="type-text" id="resourceinput"></input>
                     </div>
-                    <div className="inputelement">
-                        <label for="category">
-                            ANY ATTACHMENT
-                        </label>
-                        <input type="text" className="type-text" id="anyinput"></input>
-                    </div>
-                    <div className="inputelement">
-                        <label for="category">
-                            YOUR NAME
-                        </label>
-                        <input type="text" className="type-text" id="yournameinput"></input>
-                    </div>
-                    <Link to={'/reward'} class="link" id="link"><Button name="Submit" /></Link>
+                
+
                 </form>
             </div>
-            <p className="optional">(OPTIONAL)</p>
             <Footer />
         </div>
     )

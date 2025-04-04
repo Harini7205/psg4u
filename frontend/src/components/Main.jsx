@@ -87,10 +87,7 @@ export const Main = () => {
           <p className='myaccname'>Name</p>
           <p className='myaccp'>Roll no : 22n2yy</p>
           <p className='myaccp'>Email : 22n2yy@psgtech.ac.in</p>
-          <img src="/images/coin.png" className='coin' alt='coinimg'/>
-          <p className='points'>20 points</p>
-          <img src="/images/editicon.png" className='editicon' alt='editimg'/>
-          <p className='editdetails'>Edit_details</p>
+        
         </div>:null
         }
         
