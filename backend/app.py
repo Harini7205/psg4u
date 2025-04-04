@@ -2,9 +2,19 @@ import streamlit as st
 import requests
 from bs4 import BeautifulSoup
 import spacy
+import subprocess
+import importlib.util
 
-# Load the NLP model
-nlp = spacy.load("en_core_web_md")
+# Check if model is installed, else install it
+def is_model_installed(model_name):
+    return importlib.util.find_spec(model_name) is not None
+
+model_name = "en_core_web_md"
+
+if not is_model_installed(model_name):
+    subprocess.run(["python", "-m", "spacy", "download", model_name])
+
+nlp = spacy.load(model_name)
 
 def extract_text(url):
     """Extracts text from the given URL using BeautifulSoup."""
