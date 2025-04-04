@@ -50,7 +50,7 @@ function LevelUpLink() {
                     </div>
                     <div className="nav">
                         <img src="/images/suggestlogo.png" className="logo-events" alt="suggestlogo" />
-                        <Link to={'/suggest'} className='link'>Suggest</Link>
+                        <Link to={'http://localhost:8501/'} className='link'>Suggest</Link>
                     </div>
                     <Link to={'/'} className="link" id="link"><Button name="Logout" /></Link>
                 </div>
