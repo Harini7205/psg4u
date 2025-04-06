@@ -48,10 +48,6 @@ function LevelUpLink() {
                         <img src="/images/homelogo.png" className="logo-events" alt="homelogo" />
                         <Link to={'/main'} className='link'>Home</Link>
                     </div>
-                    <div className="nav">
-                        <img src="/images/suggestlogo.png" className="logo-events" alt="suggestlogo" />
-                        <Link to={'http://localhost:8501/'} className='link'>Suggest</Link>
-                    </div>
                     <Link to={'/'} className="link" id="link"><Button name="Logout" /></Link>
                 </div>
             </nav>

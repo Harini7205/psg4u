@@ -13,6 +13,12 @@ function BuildStrategy() {
     const [result, setResult] = useState(null);
 
     const handlePredict = async () => {
+        const invalidMarks = ca1Marks.some(mark => mark > 50);
+
+        if (invalidMarks) {
+            alert("CA1 marks must be less than or equal to 50 for all subjects.");
+            return;
+        }
         try {
             const response = await axios.post("http://localhost:8000/api/cgpa/predict/", {
                 ca1_marks: ca1Marks,
